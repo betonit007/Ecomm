@@ -97,7 +97,7 @@
 }
 
 .header .right-section {
-  width: 180px;
+  width: 245px;
   flex-shrink: 0;
   display: flex;
   justify-content: end;
@@ -113,6 +113,20 @@
 }
 
 .header .orders-text {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.header .account-link {
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+.header .account-text {
   display: block;
   font-size: 15px;
   font-weight: 700;

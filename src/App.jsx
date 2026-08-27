@@ -3,6 +3,7 @@ import "./App.css";
 import { HomePage } from "./pages/home/HomePage";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import Orders from "./pages/orders/Orders";
+import LoginRegisterPage from "./pages/auth/LoginRegisterPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -31,6 +32,7 @@ function App() {
           element={<CheckoutPage cartItems={cartItems} loadCart={loadCart} />}
         />
         <Route path="orders" element={<Orders cartItems={cartItems} />} />
+        <Route path="auth" element={<LoginRegisterPage />} />
       </Routes>
     </>
   );

@@ -1,7 +1,9 @@
 import { Link } from "react-router";
+import { useAuth } from "../context/useAuth";
 import "./Header.css";
 
 function Header({ cart = [] }) {
+  const { isAuthenticated } = useAuth();
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
@@ -22,8 +24,17 @@ function Header({ cart = [] }) {
       </div>
 
       <div className="right-section">
-        <Link className="orders-link header-link" to="/order">
+        <Link className="orders-link header-link" to="/orders">
           <span className="orders-text">Orders</span>
+        </Link>
+
+        <Link
+          className="account-link header-link"
+          to={isAuthenticated ? "/account" : "/auth"}
+        >
+          <span className="account-text">
+            {isAuthenticated ? "Account" : "Sign in"}
+          </span>
         </Link>
 
         <Link className="cart-link header-link" to="/checkout">
