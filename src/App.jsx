@@ -1,8 +1,10 @@
 import { Routes, Route } from "react-router";
+import ProtectedRoute from "./ProtectedRoute";
 import { HomePage } from "./pages/home/HomePage";
 import CartPage from "./pages/cart/CartPage";
 import Orders from "./pages/orders/Orders";
 import LoginRegisterPage from "./pages/auth/LoginRegisterPage";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -32,11 +34,16 @@ function App() {
           path="cart"
           element={<CartPage cartItems={cartItems} loadCart={loadCart} />}
         />
-        {/* <Route
-          path="checkout"
-          element={<CheckoutPage cartItems={cartItems} loadCart={loadCart} />}
-        /> */}
-        <Route path="orders" element={<Orders cartItems={cartItems} />} />
+        <Route element={<ProtectedRoute />}>
+          <Route
+            path="checkout"
+            element={<CheckoutPage cartItems={cartItems} loadCart={loadCart} />}
+          />
+        </Route>
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="orders" element={<Orders cartItems={cartItems} />} />
+        </Route>
         <Route path="auth" element={<LoginRegisterPage />} />
       </Routes>
     </>
