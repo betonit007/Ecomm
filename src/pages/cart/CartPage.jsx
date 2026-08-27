@@ -4,10 +4,10 @@ import { PaymentSummary } from "./PaymentSummary";
 
 import { Link } from "react-router";
 import axios from "axios";
-import "./CheckoutPage.css";
-import "./CheckoutHeader.css";
+import "./CartPage.css";
+import "./CartHeader.css";
 
-function CheckoutPage({ cartItems = [], loadCart }) {
+function CartPage({ cartItems = [], loadCart }) {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
 
@@ -43,7 +43,7 @@ function CheckoutPage({ cartItems = [], loadCart }) {
             </div>
 
             <div className="checkout-header-middle-section">
-              Checkout (
+              Cart (
               <Link className="return-to-home-link" to="/">
                 {totalQuantity} items
               </Link>
@@ -81,4 +81,4 @@ function CheckoutPage({ cartItems = [], loadCart }) {
   );
 }
 
-export default CheckoutPage;
+export default CartPage;

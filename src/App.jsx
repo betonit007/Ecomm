@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router";
-import "./App.css";
 import { HomePage } from "./pages/home/HomePage";
-import CheckoutPage from "./pages/checkout/CheckoutPage";
+import CartPage from "./pages/cart/CartPage";
 import Orders from "./pages/orders/Orders";
 import LoginRegisterPage from "./pages/auth/LoginRegisterPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+import "./App.css";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -28,9 +29,13 @@ function App() {
           element={<HomePage cartItems={cartItems} loadCart={loadCart} />}
         />
         <Route
+          path="cart"
+          element={<CartPage cartItems={cartItems} loadCart={loadCart} />}
+        />
+        {/* <Route
           path="checkout"
           element={<CheckoutPage cartItems={cartItems} loadCart={loadCart} />}
-        />
+        /> */}
         <Route path="orders" element={<Orders cartItems={cartItems} />} />
         <Route path="auth" element={<LoginRegisterPage />} />
       </Routes>
