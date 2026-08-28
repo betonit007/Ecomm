@@ -5,6 +5,7 @@ import CartPage from "./pages/cart/CartPage";
 import Orders from "./pages/orders/Orders";
 import LoginRegisterPage from "./pages/auth/LoginRegisterPage";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
+import PaymentSuccessPage from "./pages/checkout/PaymentSuccessPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -45,6 +46,7 @@ function App() {
           <Route path="orders" element={<Orders cartItems={cartItems} />} />
         </Route>
         <Route path="auth" element={<LoginRegisterPage />} />
+        <Route path="success" element={<PaymentSuccessPage />} />
       </Routes>
     </>
   );
