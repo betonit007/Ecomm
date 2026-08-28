@@ -55,7 +55,7 @@ export const PaymentSummary = ({ paymentSummary, totalQuantity, loadCart }) => {
         onClick={createOrder}
         className="place-order-button button-primary"
       >
-        Place your order
+        Continue to Payment
       </button>
     </>
   );

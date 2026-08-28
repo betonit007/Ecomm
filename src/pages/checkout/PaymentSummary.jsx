@@ -1,15 +1,22 @@
-import axios from "axios";
+import { useEffect } from "react";
 import { formatMoney } from "../../utils/money";
-import { useNavigate } from "react-router";
+import StripeElements from "./StripeElements";
 
-export const PaymentSummary = ({ paymentSummary, totalQuantity, loadCart }) => {
-  const navigate = useNavigate();
+export const PaymentSummary = ({ paymentSummary, totalQuantity }) => {
+  useEffect(() => {
+    if (!paymentSummary) {
+      return;
+    }
 
-  const createOrder = async () => {
-    await axios.post("/api/orders", { paymentSummary });
-    await loadCart();
-    navigate("/orders");
-  };
+    const orderSummary = {
+      id: crypto.randomUUID(),
+      orderDate: new Date().toISOString(),
+      ...paymentSummary,
+    };
+
+    localStorage.setItem("lastOrderSummary", JSON.stringify(orderSummary));
+  }, [paymentSummary]);
+
   return (
     <>
       <div className="payment-summary-row">
@@ -51,12 +58,7 @@ export const PaymentSummary = ({ paymentSummary, totalQuantity, loadCart }) => {
         </div>
       </div>
 
-      <button
-        onClick={createOrder}
-        className="place-order-button button-primary"
-      >
-        Place your order
-      </button>
+      <StripeElements />
     </>
   );
 };
